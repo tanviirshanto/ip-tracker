@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+
+
+@layer utilities {
+
+  #map{
+    z-index: 1;
+  }
+
+
+
+  /* Default background for small screens (mobile) */
+
+  #background-container {
+  background-image: url(../../public/bg-desktop.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
+
+/* Background for medium and larger screens (desktop) */
+@media (min-width: 768px) {
+  .background-container {
+    background-image: url(../../public/bg-desktop.png);
+  }
+}
+  
+}
