@@ -2,10 +2,9 @@
 import Head from "next/head";
 import Image from "next/image";
 import MapComponent from "../components/MapComponent";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import ArrowButton from "../components/ArrowButton";
-
 
 export default function Home() {
   const [location, setLocation] = useState({ lat: 51.505, lng: -0.09 }); // Default to London
@@ -22,46 +21,45 @@ export default function Home() {
 
   const [imageSrc, setImageSrc] = useState("/bg-mobile.png");
 
-const isIpAddress = (inputValue) => {
-  // Regular expression for validating an IPv4 address
-  const ipv4Regex =
-    /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-  // Regular expression for validating an IPv6 address
-  const ipv6Regex = /([a-f0-9:]+:+)+[a-f0-9]+/i;
-  return ipv4Regex.test(inputValue) || ipv6Regex.test(inputValue);
-};
+  const isIpAddress = (inputValue) => {
+    // Regular expression for validating an IPv4 address
+    const ipv4Regex =
+      /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+    // Regular expression for validating an IPv6 address
+    const ipv6Regex = /([a-f0-9:]+:+)+[a-f0-9]+/i;
+    return ipv4Regex.test(inputValue) || ipv6Regex.test(inputValue);
+  };
 
-const fetchLocation = async (inputValue) => {
-  try {
-    const params = isIpAddress(inputValue)
-      ? { ip: inputValue }
-      : { domain: inputValue };
+  const fetchLocation = async (inputValue) => {
+    try {
+      const params = isIpAddress(inputValue)
+        ? { ip: inputValue }
+        : { domain: inputValue };
 
-    const response = await axios.get("/api/proxy", { params });
+      const response = await axios.get("/api/proxy", { params });
 
-    const {
-      latitude,
-      longitude,
-      region_name,
-      city_name,
-      zip_code,
-      time_zone,
-      ip: responseIp,
-      as,
-    } = response.data;
+      const {
+        latitude,
+        longitude,
+        region_name,
+        city_name,
+        zip_code,
+        time_zone,
+        ip: responseIp,
+        as,
+      } = response.data;
 
-    setLocation({ lat: latitude, lng: longitude });
-    setRegion(region_name);
-    setCity(city_name);
-    setGeoNameId(zip_code);
-    setAddress(responseIp);
-    setIsp(as);
-    setTimezone(time_zone);
-  } catch (error) {
-    console.error("Error fetching location data:", error);
-  }
-};
-
+      setLocation({ lat: latitude, lng: longitude });
+      setRegion(region_name);
+      setCity(city_name);
+      setGeoNameId(zip_code);
+      setAddress(responseIp);
+      setIsp(as);
+      setTimezone(time_zone);
+    } catch (error) {
+      console.error("Error fetching location data:", error);
+    }
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -69,7 +67,9 @@ const fetchLocation = async (inputValue) => {
   };
 
   useEffect(() => {
-    fetchLocation(searchValue);
+    if (typeof window !== "undefined") {
+      fetchLocation(searchValue);
+    }
   }, []);
 
   useEffect(() => {
@@ -81,14 +81,16 @@ const fetchLocation = async (inputValue) => {
       }
     };
 
-    // Initial check
-    updateImageSrc();
+    if (typeof window !== "undefined") {
+      // Initial check
+      updateImageSrc();
 
-    // Add event listener
-    window.addEventListener("resize", updateImageSrc);
+      // Add event listener
+      window.addEventListener("resize", updateImageSrc);
 
-    // Clean up event listener on component unmount
-    return () => window.removeEventListener("resize", updateImageSrc);
+      // Clean up event listener on component unmount
+      return () => window.removeEventListener("resize", updateImageSrc);
+    }
   }, []);
 
   return (
@@ -124,32 +126,32 @@ const fetchLocation = async (inputValue) => {
               height={50}
               width={50}
               src="/icon-arrow.svg"
-              className="w-4 h-4  "
+              className="w-4 h-4"
             />
           </button>
         </div>
-        <div className="absolute md:-bottom-24 -bottom-[70%] bg-white md:h-48 h-full md:w-[70%] w-[75%] shadow-2xl rounded-xl   text-2xl px-5 flex  flex-col justify-center">
-
-          <div className="flex flex-col gap-5 md:gap-0 md:flex-row justify-between items  text-black w-full text-xl font-bold md:pl-10  py-14 md:py-0 text-center md:text-left ">
-            <div className="md:w-1/4 flex flex-col ">
+        <div className="absolute md:-bottom-24 -bottom-[70%] bg-white md:h-48 h-full md:w-[70%] w-[75%] shadow-2xl rounded-xl text-2xl px-5 flex flex-col justify-center">
+          <div className="flex flex-col gap-5 md:gap-0 md:flex-row justify-between items text-black w-full text-xl font-bold md:pl-10 py-14 md:py-0 text-center md:text-left">
+            <div className="md:w-1/4 flex flex-col">
               <h1 className="text-lg text-gray-500 mb-1">IP Address:</h1>
               <h1>{address}</h1>
             </div>
-            <div className="md:w-1/4 flex flex-col ">
+            <div className="md:w-1/4 flex flex-col">
               <h1 className="text-lg text-gray-500 mb-1">Location:</h1>
-              <div className="flex justify-center md:justify-start"><h1>{city},</h1>
-              <h1>{region},</h1>
-              <h1>{geoNameId}</h1></div>
-              
+              <div className="flex justify-center md:justify-start">
+                <h1>{city},</h1>
+                <h1>{region},</h1>
+                <h1>{geoNameId}</h1>
+              </div>
             </div>
             <div className="md:w-1/4">
               <h1 className="text-lg text-gray-500 mb-1">Timezone:</h1>
               <h1>GMT{timezone}</h1>
-            </div>{" "}
+            </div>
             <div className="md:w-1/4">
               <h1 className="text-lg text-gray-500 mb-1">ISP:</h1>
-              <h1 className="">{isp}</h1>
-            </div>{" "}
+              <h1>{isp}</h1>
+            </div>
           </div>
           <div></div>
         </div>
