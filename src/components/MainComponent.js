@@ -79,7 +79,7 @@ export default function MainComponent(){
           const clientIp = response.data.ip;
           console.log(clientIp)
         setSearchValue(clientIp);
-        // fetchLocation(clientIp);
+         fetchLocation(clientIp);
       } catch (error) {
         console.error("Error fetching client IP:", error);
       }
