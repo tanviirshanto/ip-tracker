@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useRef, useState } from "react";
 import L from "leaflet";
-import axios from "axios";
+
 
 
 const MapComponent = ({location}) => {
