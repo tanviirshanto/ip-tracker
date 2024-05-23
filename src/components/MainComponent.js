@@ -25,13 +25,15 @@ export default function MainComponent(){
   const [city, setCity] = useState("");
   const [geoNameId, setGeoNameId] = useState("");
 
-  const [timezone, setTimezone] = useState("GMT+0");
+  const [timezone, setTimezone] = useState("+0");
   const [isp, setIsp] = useState("Starlink");
 
   const [searchValue, setSearchValue] = useState("");
 
   const imageSrc = useResponsiveImage();
 
+    
+    
   const fetchLocation = async (inputValue) => {
     try {
       const params = isIpAddress(inputValue)
@@ -68,10 +70,23 @@ export default function MainComponent(){
     fetchLocation(searchValue);
   };
 
+    
+    
   useEffect(() => {
-    
-      fetchLocation(searchValue);
-    
+    const fetchClientIp = async () => {
+      try {
+        const response = await axios.get("/api/getClientIp");
+          const clientIp = response.data.ip;
+          console.log(clientIp)
+        setSearchValue(clientIp);
+        // fetchLocation(clientIp);
+      } catch (error) {
+        console.error("Error fetching client IP:", error);
+      }
+    };
+
+    fetchClientIp();
+  
   }, []);
 
 
