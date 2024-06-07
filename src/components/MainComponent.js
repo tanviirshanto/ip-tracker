@@ -136,10 +136,12 @@ export default function MainComponent(){
             </div>
             <div className="md:w-1/4 flex flex-col">
               <h1 className="text-lg text-gray-500 mb-1">Location:</h1>
-              <div className="flex justify-center md:justify-start">
+              <div className="flex flex-col justify-center md:justify-start">
                 <h1>{city},</h1>
-                <h1>{region},</h1>
-                <h1>{geoNameId}</h1>
+                <div className="flex" >
+                  <h1>{region},</h1>
+                  <h1>{geoNameId}</h1>
+                </div>
               </div>
             </div>
             <div className="md:w-1/4">
