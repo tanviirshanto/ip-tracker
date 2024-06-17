@@ -127,7 +127,7 @@ export default function MainComponent(){
             />
           </button>
         </div>
-        <div className="absolute lg:-bottom-24 -bottom-[70%] bg-white lg:h-48 h-full lg:w-[70%] w-[75%] shadow-2xl rounded-xl text-2xl px-5 flex flex-col justify-center">
+        <div className="absolute lg:-bottom-24 -bottom-[70%] bg-white lg:h-48 h-auto lg:w-[70%] w-[75%] shadow-2xl rounded-xl text-2xl px-5 flex flex-col justify-center">
           <div className="flex flex-col gap-5 lg:gap-0 md:flex-row justify-between items text-black w-full text-xl font-bold md:pl-10 py-14 md:py-0 text-center lg:text-left">
             <div className="lg:w-1/4 flex flex-col">
               <h1 className="text-sm lg:text-lg text-gray-500 mb-1">
