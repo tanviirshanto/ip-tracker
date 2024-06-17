@@ -103,7 +103,7 @@ export default function MainComponent(){
           src={imageSrc}
           className="w-full"
         />
-        <div className="absolute top-[20%] w-full max-w-screen flex justify-center text-white text-2xl font-bold">
+        <div className="absolute top-[20%] w-auto max-w-screen flex justify-center text-white text-2xl font-bold">
           IP Address Tracker
         </div>
         <div className="absolute top-[40%] w-screen flex justify-center ">
@@ -127,8 +127,8 @@ export default function MainComponent(){
             />
           </button>
         </div>
-        <div className="absolute lg:-bottom-24 top-[70%] lg:top-auto bg-white lg:h-48 h-auto lg:w-[70%] w-[75%] shadow-2xl rounded-xl text-2xl px-5 flex flex-col justify-center">
-          <div className="flex flex-col gap-5 lg:gap-0 md:flex-row justify-between items text-black w-full text-xl font-bold md:pl-10 py-14 md:py-0 text-center lg:text-left">
+        <div className="absolute md:-bottom-24 top-[70%] md:top-auto bg-white md:h-48 h-auto md:w-[70%] w-[75%] shadow-2xl rounded-xl text-2xl px-5 flex flex-col justify-center">
+          <div className="flex flex-col gap-5 lg:gap-0 md:flex-row justify-between items text-black w-full text-xl font-bold md:pl-10 py-8 md:py-0 text-center lg:text-left">
             <div className="lg:w-1/4 flex flex-col">
               <h1 className="text-sm lg:text-lg text-gray-500 mb-1">
                 IP Address:
