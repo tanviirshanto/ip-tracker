@@ -127,28 +127,34 @@ export default function MainComponent(){
             />
           </button>
         </div>
-        <div className="absolute md:-bottom-24 -bottom-[70%] bg-white md:h-48 h-full md:w-[70%] w-[75%] shadow-2xl rounded-xl text-2xl px-5 flex flex-col justify-center">
-          <div className="flex flex-col gap-5 md:gap-0 md:flex-row justify-between items text-black w-full text-xl font-bold md:pl-10 py-14 md:py-0 text-center md:text-left">
-            <div className="md:w-1/4 flex flex-col">
-              <h1 className="text-lg text-gray-500 mb-1">IP Address:</h1>
+        <div className="absolute lg:-bottom-24 -bottom-[70%] bg-white lg:h-48 h-full lg:w-[70%] w-[75%] shadow-2xl rounded-xl text-2xl px-5 flex flex-col justify-center">
+          <div className="flex flex-col gap-5 lg:gap-0 md:flex-row justify-between items text-black w-full text-xl font-bold md:pl-10 py-14 md:py-0 text-center lg:text-left">
+            <div className="lg:w-1/4 flex flex-col">
+              <h1 className="text-sm lg:text-lg text-gray-500 mb-1">
+                IP Address:
+              </h1>
               <h1>{address}</h1>
             </div>
-            <div className="md:w-1/4 flex flex-col">
-              <h1 className="text-lg text-gray-500 mb-1">Location:</h1>
-              <div className="flex flex-col justify-center md:justify-start">
+            <div className="lg:w-1/4 flex flex-col">
+              <h1 className="text-sm lg:text-lg text-gray-500 mb-1">
+                Location:
+              </h1>
+              <div className="flex flex-col justify-center lg:justify-start">
                 <h1>{city},</h1>
-                <div className="flex" >
+                <div className="flex">
                   <h1>{region},</h1>
                   <h1>{geoNameId}</h1>
                 </div>
               </div>
             </div>
-            <div className="md:w-1/4">
-              <h1 className="text-lg text-gray-500 mb-1">Timezone:</h1>
+            <div className="lg:w-1/4">
+              <h1 className="text-sm lg:text-lg text-gray-500 mb-1">
+                Timezone:
+              </h1>
               <h1>GMT{timezone}</h1>
             </div>
-            <div className="md:w-1/4">
-              <h1 className="text-lg text-gray-500 mb-1">ISP:</h1>
+            <div className="lg:w-1/4">
+              <h1 className="text-sm lg:text-lg text-gray-500 mb-1">ISP:</h1>
               <h1>{isp}</h1>
             </div>
           </div>
