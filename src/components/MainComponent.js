@@ -127,8 +127,8 @@ export default function MainComponent(){
             />
           </button>
         </div>
-        <div className="absolute md:-bottom-24 top-[70%] lg:top-auto bg-white md:h-36 lg:h-48 h-auto lg:w-[70%] w-[75%] shadow-2xl rounded-xl text-2xl px-5 flex flex-col justify-center">
-          <div className="flex flex-col gap-5 lg:gap-0 md:flex-row justify-between text-black w-full text-xl font-bold lg:pl-10 py-8 md:py-0 text-center lg:text-left">
+        <div className="absolute lg:-bottom-24 top-[70%] lg:top-auto bg-white  lg:h-48 h-auto lg:w-[70%] w-[75%] shadow-2xl rounded-xl text-2xl px-5 flex flex-col justify-center">
+          <div className="flex flex-col gap-5 lg:gap-0 lg:flex-row justify-between text-black w-full text-xl font-bold lg:pl-10 py-8 md:py-0 text-center lg:text-left">
             <div className="lg:w-1/4 flex flex-col">
               <h1 className="text-sm lg:text-lg text-gray-500 mb-1">
                 IP Address:
