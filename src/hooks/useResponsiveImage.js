@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 
 const useResponsiveImage = () => {
-  const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
+  const isDesktop = useMediaQuery({ query: "(min-width: 1024px)" });
   const [imageSrc, setImageSrc] = useState("/bg-mobile.png");
 
   useEffect(() => {
